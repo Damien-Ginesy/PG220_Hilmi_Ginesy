@@ -1,3 +1,9 @@
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class TestReadXml {
 
     public static void main(String[] argvs)
