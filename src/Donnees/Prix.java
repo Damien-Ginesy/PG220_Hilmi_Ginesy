@@ -1,3 +1,5 @@
+package src.Donnees;
+
 public class Prix {
     double prix;
 
