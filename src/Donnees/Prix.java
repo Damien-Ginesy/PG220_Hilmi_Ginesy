@@ -1,12 +1,17 @@
 package Donnees;
 
 public class Prix {
-    double prix;
+    private double prix;
 
-    Prix(double prix){
-        this.prix=prix;
+    public Prix(double prix) {
+        this.prix = prix;
     }
 
-    double getPrix(){return this.prix;}
-    void setPrix(double prix)  { this.prix = prix;}
+    public double getPrix() {
+        return this.prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
 }

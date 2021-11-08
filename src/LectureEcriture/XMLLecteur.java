@@ -1,5 +1,6 @@
 package LectureEcriture;
 
+import Donnees.Client;
 import Donnees.ObjetModifiable;
 
 import javax.xml.stream.XMLInputFactory;
@@ -7,10 +8,11 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.events.XMLEvent;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 public class XMLLecteur extends IOGestion {
 
-    XMLStreamReader fichierConsultable;
+    private final XMLStreamReader fichierConsultable;
 
     public XMLLecteur(ObjetModifiable objetModifiable, String fichierNom) throws FileNotFoundException, XMLStreamException {
         super(objetModifiable, fichierNom);
@@ -20,13 +22,19 @@ public class XMLLecteur extends IOGestion {
 
     public void LectureDonnee() throws XMLStreamException {
         int evenement;
-        while(fichierConsultable.hasNext()) {
+        while (fichierConsultable.hasNext()) {
             evenement = fichierConsultable.next();
-            switch (evenement) {
-                case XMLEvent.START_ELEMENT:
-                    System.out.println(fichierConsultable.getName());
-                    break;
+            if (evenement == XMLEvent.START_ELEMENT) {
+                if (Objects.equals(fichierConsultable.getName().toString(), "Client")) {
+                    Client client = creerClient(fichierConsultable);
+                }
             }
         }
+    }
+
+    private Client creerClient(XMLStreamReader fichier) throws XMLStreamException {
+        fichier.next();
+        String idClient = fichier.getText();
+        return new Client(Integer.parseInt(idClient));
     }
 }

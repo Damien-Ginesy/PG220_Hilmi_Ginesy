@@ -1,6 +1,9 @@
 package Donnees;
 
 public class Client implements ObjetModifiable {
-    int id;
-    Planche ListePlanche[];
+    private int id;
+
+    public Client(int id) {
+        this.id = id;
+    }
 }
