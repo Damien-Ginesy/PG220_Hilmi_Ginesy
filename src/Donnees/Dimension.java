@@ -1,6 +1,6 @@
 package src.Donnees;
 
-public class Dimension {
+public class Dimension extends Comparaison{
     double longueur;
     double largeur;
 
@@ -23,5 +23,19 @@ public class Dimension {
 
     void setLargeur(double largeur) {
         this.largeur = largeur;
+    }
+
+    int EstDansIntervalle(Object Dimension){
+        Dimension dim=(Dimension) Dimension;
+        if(dim.largeur<0){
+            return 1;
+        }
+        if(dim.longueur<0){
+            return 1;
+        }
+        if(dim.longueur< dim.largeur){
+            return 1;
+        }
+        return 0;
     }
 }

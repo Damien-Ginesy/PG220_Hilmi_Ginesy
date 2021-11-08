@@ -1,7 +1,6 @@
 package src.Donnees;
 
 public interface Comparaison {
-    default void EstDansIntervalle(){
-    }
+    int EstDansIntervalle(Object element);
 
 }
