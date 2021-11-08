@@ -1,17 +1,17 @@
-package src.Donnees;
+package Donnees;
 
 public class Date {
-    Date date;
+    private Date date;
 
-    Date(Date date) {
+    public Date(Date date) {
         this.date = date;
     }
 
-    Date getDate() {
+    public Date getDate() {
         return this.date;
     }
 
-    void setDate(Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

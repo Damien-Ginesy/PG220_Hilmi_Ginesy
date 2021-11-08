@@ -1,20 +1,17 @@
-package src.Donnees;
+package Donnees;
 
-public class Prix extends Comparaison{
-    double prix;
+public class Prix {
+    private double prix;
 
-    Prix(double prix){
-        this.prix=prix;
+    public Prix(double prix) {
+        this.prix = prix;
     }
 
-    double getPrix(){return this.prix;}
-    void setPrix(double prix)  { this.prix = prix;}
+    public double getPrix() {
+        return this.prix;
+    }
 
-    int EstDansIntervalle(Object Price){
-        Prix price=(Prix) Price;
-        if(price<0){
-            return 1;
-        }
-        return 0;
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 }

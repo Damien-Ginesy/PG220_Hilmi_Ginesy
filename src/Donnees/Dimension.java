@@ -1,41 +1,27 @@
-package src.Donnees;
+package Donnees;
 
-public class Dimension extends Comparaison{
-    double longueur;
-    double largeur;
+public class Dimension {
+    private double longueur;
+    private double largeur;
 
-    Dimension(double longueur, double largeur) {
+    public Dimension(double longueur, double largeur) {
         this.longueur = longueur;
         this.largeur = largeur;
     }
 
-    double getLongueur() {
+    public double getLongueur() {
         return this.longueur;
     }
 
-    double getLargeur() {
-        return this.largeur;
-    }
-
-    void setLongueur(double longueur) {
+    public void setLongueur(double longueur) {
         this.longueur = longueur;
     }
 
-    void setLargeur(double largeur) {
-        this.largeur = largeur;
+    public double getLargeur() {
+        return this.largeur;
     }
 
-    int EstDansIntervalle(Object Dimension){
-        Dimension dim=(Dimension) Dimension;
-        if(dim.largeur<0){
-            return 1;
-        }
-        if(dim.longueur<0){
-            return 1;
-        }
-        if(dim.longueur< dim.largeur){
-            return 1;
-        }
-        return 0;
+    public void setLargeur(double largeur) {
+        this.largeur = largeur;
     }
 }

@@ -1,33 +1,43 @@
-package src.Donnees;
+package Donnees;
 
 public class Bois {
-    int id;
-    int nombre;
-    Prix prix;
-    Date date;
-    Dimension dimension;
+    private int id;
+    private int idProprietaire;
+    private int nombre;
+    private Prix prix;
+    private Date date;
+    private Dimension dimension;
 
-    Bois(int id, int nombre, Prix prix, Date date, Dimension dimension) {
+    public Bois(int id, int nombre, Prix prix, Date date, Dimension dimension,int idProprietaire) {
         this.id = id;
         this.nombre = nombre;
         this.prix = prix;
         this.date = date;
         this.dimension = dimension;
+        this.idProprietaire = idProprietaire;
     }
 
-    int getId() {
+    public int getId() {
         return this.id;
     }
 
-    int getNombre() {
-        return this.nombre;
-    }
-
-    void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    void setNombre(int nombre) {
+    public int getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(int nombre) {
         this.nombre = nombre;
+    }
+
+    public int getIdProprietaire() {
+        return idProprietaire;
+    }
+
+    public void setIdProprietaire(int idProprietaire) {
+        this.idProprietaire = idProprietaire;
     }
 }
