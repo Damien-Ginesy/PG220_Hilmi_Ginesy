@@ -1,4 +1,4 @@
-package src.Donnees;
+package Donnees;
 
 public class Prix {
     double prix;
