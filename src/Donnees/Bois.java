@@ -1,6 +1,6 @@
 package Donnees;
 
-public class Bois {
+public class Bois implements ObjetModifiable {
     private int id;
     private int idProprietaire;
     private int nombre;
@@ -8,7 +8,7 @@ public class Bois {
     private Date date;
     private Dimension dimension;
 
-    public Bois(int id, int nombre, Prix prix, Date date, Dimension dimension,int idProprietaire) {
+    public Bois(int id, int nombre, Prix prix, Date date, Dimension dimension,int idProprietaire){
         this.id = id;
         this.nombre = nombre;
         this.prix = prix;

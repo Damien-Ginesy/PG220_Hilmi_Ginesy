@@ -1,17 +1,17 @@
 package Donnees;
 
 public class Date {
-    private Date date;
+    private java.util.Date date;
 
-    public Date(Date date) {
+    public Date(java.util.Date date) {
         this.date = date;
     }
 
-    public Date getDate() {
+    public java.util.Date getDate() {
         return this.date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(java.util.Date date) {
         this.date = date;
     }
 }
