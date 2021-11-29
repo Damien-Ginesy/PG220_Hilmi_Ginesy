@@ -1,4 +1,10 @@
-package Donnees;
+package src.Donnees;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Date {
     private java.util.Date date;
@@ -15,20 +21,24 @@ public class Date {
         this.date = date;
     }
 
-    int EstDansIntervalle(Object date){
-        SimpleDateFormat format = new SimpleDateFormat("JJ/MM/AA");
-        format.setLenient(false);
-        try
-        {
-            Date d = (Date) date;
-
+    public static int estDansIntervalle(String date){
+        try {
+            DateFormat df = new SimpleDateFormat("dd.mm.aa");
+            df.setLenient(false);
+            df.parse(date);
         }
-        // Date invalide
-        catch (ParseException e)
-        {
-            System.out.println(date+" est une date invalide");
+        catch (ParseException e) {
             return 1;
         }
-        return 0;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.mm.aa");
+        String aujourdhui= dtf.format(LocalDateTime.now());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.aa");
+
+        if (sdf.parse(date).compareTo(sdf.parse(aujourdhui)) > 0) {
+            //verifier que la date est dans le futur
+            return 0;
+        }
+        return 1;
     }
 }

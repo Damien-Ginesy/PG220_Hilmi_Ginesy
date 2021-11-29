@@ -1,4 +1,4 @@
-package Donnees;
+package src.Donnees;
 
 public class Client implements ObjetModifiable {
     private int id;
