@@ -1,4 +1,4 @@
-package Donnees;
+package src.Donnees;
 
 public class Dimension {
     private double longueur;
@@ -23,5 +23,12 @@ public class Dimension {
 
     public void setLargeur(double largeur) {
         this.largeur = largeur;
+    }
+
+    public static int EstDansIntervalle(Dimension dim){
+        if(dim.largeur> dim.largeur && dim.largeur>0 && dim.longueur>0){
+            return 0;
+        }
+        return 1;
     }
 }

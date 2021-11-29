@@ -1,4 +1,4 @@
-package Donnees;
+package src.Donnees;
 
 class Client extends ObjetModifiable {
     private final int id;

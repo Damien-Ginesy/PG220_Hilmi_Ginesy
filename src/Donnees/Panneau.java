@@ -1,4 +1,4 @@
-package Donnees;
+package src.Donnees;
 
 public class Panneau extends Bois {
 

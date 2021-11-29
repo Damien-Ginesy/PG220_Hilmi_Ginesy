@@ -1,4 +1,4 @@
-package Donnees;
+package src.Donnees;
 
 class Planche extends Bois {
 
