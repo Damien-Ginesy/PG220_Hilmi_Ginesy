@@ -1,9 +1,18 @@
 package Donnees;
 
-public class Client implements ObjetModifiable {
-    private int id;
+class Client extends ObjetModifiable {
+    private final int id;
 
-    public Client(int id) {
+    Client(int id) {
         this.id = id;
+    }
+
+    int getId() {
+        return id;
+    }
+
+    @Override
+    void initialiser() {
+        objetLu.creationObjetModifiable();
     }
 }

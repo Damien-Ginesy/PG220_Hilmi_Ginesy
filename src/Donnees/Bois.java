@@ -1,6 +1,8 @@
 package Donnees;
 
-public class Bois implements ObjetModifiable {
+import java.util.ArrayList;
+
+class Bois extends ObjetModifiable {
     private int id;
     private int idProprietaire;
     private int nombre;
@@ -8,7 +10,7 @@ public class Bois implements ObjetModifiable {
     private Date date;
     private Dimension dimension;
 
-    public Bois(int id, int nombre, Prix prix, Date date, Dimension dimension,int idProprietaire){
+    Bois(int id, int nombre, Prix prix, Date date, Dimension dimension,int idProprietaire){
         this.id = id;
         this.nombre = nombre;
         this.prix = prix;
@@ -17,27 +19,27 @@ public class Bois implements ObjetModifiable {
         this.idProprietaire = idProprietaire;
     }
 
-    public int getId() {
+    int getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
-    public int getNombre() {
+    int getNombre() {
         return this.nombre;
     }
 
-    public void setNombre(int nombre) {
+    void setNombre(int nombre) {
         this.nombre = nombre;
     }
 
-    public int getIdProprietaire() {
+    int getIdProprietaire() {
         return idProprietaire;
     }
 
-    public void setIdProprietaire(int idProprietaire) {
+    void setIdProprietaire(int idProprietaire) {
         this.idProprietaire = idProprietaire;
     }
 }

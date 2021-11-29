@@ -1,4 +1,10 @@
 package Donnees;
 
-public interface ObjetModifiable {
+import LectureEcriture.IOGestion;
+
+abstract public class ObjetModifiable {
+    IOGestion objetLu;
+    void initialiser(){
+
+    }
 }

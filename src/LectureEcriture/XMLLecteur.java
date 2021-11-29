@@ -1,11 +1,13 @@
 package LectureEcriture;
 
-import Donnees.*;
+import Donnees.Client;
+import Donnees.ObjetModifiable;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.events.XMLEvent;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,13 +15,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class XMLLecteur extends IOGestion {
+class XMLLecteur implements IOGestion {
 
     private final XMLStreamReader fichierConsultable;
     private final List<ObjetModifiable> listeDonnees = new ArrayList<>();
 
     public XMLLecteur(String fichierNom) throws FileNotFoundException, XMLStreamException {
-        super(fichierNom);
+        FileInputStream fichier = new FileInputStream(fichierNom);
         XMLInputFactory fichierParser = XMLInputFactory.newInstance();
         fichierConsultable = fichierParser.createXMLStreamReader(fichier);
     }
@@ -38,7 +40,8 @@ public class XMLLecteur extends IOGestion {
     private void creerClient() throws XMLStreamException, ParseException {
         String idClientTexte = fichierConsultable.getAttributeValue(null, "id");
         int idClient = Integer.parseInt(idClientTexte);
-        listeDonnees.add(new Client(idClient));
+
+        listeDonnees.add(client);
         creerPlanche(idClient);
     }
 
@@ -72,7 +75,12 @@ public class XMLLecteur extends IOGestion {
         }
     }
 
-    public List<ObjetModifiable> getListeDonnees() {
+    List<ObjetModifiable> getListeDonnees() {
         return listeDonnees;
+    }
+
+    @Override
+    public ObjetModifiable creationObjetModifiable() {
+
     }
 }
