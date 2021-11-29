@@ -1,8 +1,6 @@
-package src.Donnees;
+package Donnees;
 
-import java.util.ArrayList;
-
-class Bois extends ObjetModifiable {
+class Bois implements ObjetModifiable {
     private int id;
     private int idProprietaire;
     private int nombre;

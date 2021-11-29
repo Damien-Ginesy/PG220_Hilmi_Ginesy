@@ -1,4 +1,4 @@
-package src.Donnees;
+package Donnees;
 
 public interface Comparaison {
     default void EstDansIntervalle() {

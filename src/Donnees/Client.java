@@ -1,6 +1,6 @@
-package src.Donnees;
+package Donnees;
 
-class Client extends ObjetModifiable {
+class Client implements ObjetModifiable {
     private final int id;
 
     Client(int id) {
@@ -9,10 +9,5 @@ class Client extends ObjetModifiable {
 
     int getId() {
         return id;
-    }
-
-    @Override
-    void initialiser() {
-        objetLu.creationObjetModifiable();
     }
 }

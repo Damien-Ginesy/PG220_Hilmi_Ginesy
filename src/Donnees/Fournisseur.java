@@ -1,8 +1,9 @@
 package Donnees;
 
-class Fournisseur extends ObjetModifiable {
+class Fournisseur implements ObjetModifiable {
+    private final int id;
 
-    Fournisseur(int id, int nombre, Prix prix, Date date, Dimension dimension, int idProprietaire) {
-
+    Fournisseur(int id) {
+        this.id = id;
     }
 }

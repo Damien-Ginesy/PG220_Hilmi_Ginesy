@@ -1,10 +1,3 @@
-package src.Donnees;
+package Donnees;
 
-import LectureEcriture.IOGestion;
-
-abstract public class ObjetModifiable {
-    IOGestion objetLu;
-    void initialiser(){
-
-    }
-}
+public interface ObjetModifiable {}

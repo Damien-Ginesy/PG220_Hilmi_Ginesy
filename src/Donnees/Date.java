@@ -1,4 +1,4 @@
-package src.Donnees;
+package Donnees;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +21,7 @@ class Date {
         this.date = date;
     }
 
-    public static int estDansIntervalle(String date){
+    public static int estDansIntervalle(String date) throws ParseException {
         try {
             DateFormat df = new SimpleDateFormat("dd.mm.aa");
             df.setLenient(false);

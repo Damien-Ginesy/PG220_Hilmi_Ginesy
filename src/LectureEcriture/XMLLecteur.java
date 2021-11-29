@@ -1,6 +1,5 @@
 package LectureEcriture;
 
-import Donnees.Client;
 import Donnees.ObjetModifiable;
 
 import javax.xml.stream.XMLInputFactory;
@@ -67,7 +66,7 @@ class XMLLecteur implements IOGestion {
                 double prixNombre = Double.parseDouble(prixTexte);
                 Prix prix = new Prix(prixNombre);
                 Date dateFormat = new SimpleDateFormat("dd.MM.yy").parse(dateTexte);
-                Donnees.Date date = new Donnees.Date(dateFormat);
+                Date date = new Date(dateFormat);
 
                 Planche planche = new Planche(idPlanche,nombre,prix,date,idClient);
                 listeDonnees.add(planche);

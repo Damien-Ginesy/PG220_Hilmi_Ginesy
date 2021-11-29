@@ -1,4 +1,4 @@
-package src.Donnees;
+package Donnees;
 
 import java.text.ParseException;
 import java.text.DecimalFormat;
