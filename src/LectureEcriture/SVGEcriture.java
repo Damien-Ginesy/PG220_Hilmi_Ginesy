@@ -1,11 +1,7 @@
 package LectureEcriture;
 
-import java.io.*;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-
-public class SVGEcriture extends IOGestion{
+/*
+public class SVGEcriture implements IOGestion{
 	
 	private FileWriter fichier_ecrit;
 	
@@ -29,4 +25,10 @@ public class SVGEcriture extends IOGestion{
 		this.fichier_ecrit.write(writer);
 		
 	}
+
+	@Override
+	public ObjetModifiable lecture(Fabrique f) throws XMLStreamException, ParseException {
+		return null;
+	}
 }
+*/

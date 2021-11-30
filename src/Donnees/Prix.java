@@ -1,6 +1,5 @@
 package Donnees;
 
-import java.text.ParseException;
 import java.text.DecimalFormat;
 
 public class Prix {
@@ -18,12 +17,12 @@ public class Prix {
         this.prix = prix;
     }
 
-    public static int estDansIntervalle(Prix price){
+    public static int estDansIntervalle(Prix price) {
 
         DecimalFormat df = new DecimalFormat("##.##");
-        String stringBonPrix=df.format(price.prix);
+        String stringBonPrix = df.format(price.prix);
         double bonPrix = Double.parseDouble(stringBonPrix);
-        if(bonPrix==price.prix && price.prix>0){
+        if (bonPrix == price.prix && price.prix > 0) {
             return 0;
         }
         return 1;

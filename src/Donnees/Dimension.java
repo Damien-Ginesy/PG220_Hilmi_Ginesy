@@ -25,8 +25,8 @@ public class Dimension {
         this.largeur = largeur;
     }
 
-    public static int EstDansIntervalle(Dimension dim){
-        if(dim.largeur> dim.largeur && dim.largeur>0 && dim.longueur>0){
+    public static int EstDansIntervalle(Dimension dim) {
+        if (dim.largeur > dim.largeur && dim.largeur > 0 && dim.longueur > 0) {
             return 0;
         }
         return 1;

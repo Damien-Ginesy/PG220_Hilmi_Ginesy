@@ -1,5 +1,6 @@
 package LectureEcriture;
 
+import Donnees.Fabrique;
 import Donnees.ObjetModifiable;
 
 import javax.xml.stream.XMLInputFactory;
@@ -9,42 +10,41 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 class XMLLecteur implements IOGestion {
 
     private final XMLStreamReader fichierConsultable;
-    private final List<ObjetModifiable> listeDonnees = new ArrayList<>();
 
-    public XMLLecteur(String fichierNom) throws FileNotFoundException, XMLStreamException {
+    XMLLecteur(String fichierNom) throws FileNotFoundException, XMLStreamException {
         FileInputStream fichier = new FileInputStream(fichierNom);
         XMLInputFactory fichierParser = XMLInputFactory.newInstance();
         fichierConsultable = fichierParser.createXMLStreamReader(fichier);
     }
 
-    public void LectureDonnee() throws XMLStreamException, ParseException {
+    public ArrayList<String> lectureDonnee() throws XMLStreamException, ParseException {
         int evenement;
         while (fichierConsultable.hasNext()) {
             evenement = fichierConsultable.next();
             if (evenement == XMLEvent.START_ELEMENT &&
                     fichierConsultable.getLocalName().equals("client")) {
-                creerClient();
+                return creerClient();
             }
         }
+        return null;
     }
 
-    private void creerClient() throws XMLStreamException, ParseException {
+    private ArrayList<String> creerClient() throws XMLStreamException, ParseException {
+        ArrayList<String> donnees = new ArrayList();
         String idClientTexte = fichierConsultable.getAttributeValue(null, "id");
-        int idClient = Integer.parseInt(idClientTexte);
-
-        listeDonnees.add(client);
-        creerPlanche(idClient);
+        ArrayList<String> data = creerPlanche();
+        donnees.add(idClientTexte);
+        donnees.addAll(data);
+        return donnees;
     }
 
-    private void creerPlanche(int idClient) throws XMLStreamException, ParseException {
+    private ArrayList<String> creerPlanche() throws XMLStreamException, ParseException {
+        ArrayList<String> donnees = new ArrayList();
         while (fichierConsultable.hasNext()) {
             int evenement = fichierConsultable.next();
             if (evenement == XMLEvent.END_ELEMENT && fichierConsultable.getLocalName().equals("client")) {
@@ -59,27 +59,20 @@ class XMLLecteur implements IOGestion {
                         "nombre");
                 String prixTexte = fichierConsultable.getAttributeValue(null,
                         "prix");
-                String dateTexte = fichierConsultable.getAttributeValue(null,"date");
+                String dateTexte = fichierConsultable.getAttributeValue(null, "date");
 
-                int idPlanche = Integer.parseInt(idPlancheTexte);
-                int nombre = Integer.parseInt(nombreTexte);
-                double prixNombre = Double.parseDouble(prixTexte);
-                Prix prix = new Prix(prixNombre);
-                Date dateFormat = new SimpleDateFormat("dd.MM.yy").parse(dateTexte);
-                Date date = new Date(dateFormat);
-
-                Planche planche = new Planche(idPlanche,nombre,prix,date,idClient);
-                listeDonnees.add(planche);
+                donnees.add(idPlancheTexte);
+                donnees.add(nombreTexte);
+                donnees.add(prixTexte);
+                donnees.add(dateTexte);
             }
         }
-    }
-
-    List<ObjetModifiable> getListeDonnees() {
-        return listeDonnees;
+        return donnees;
     }
 
     @Override
-    public ObjetModifiable creationObjetModifiable() {
-
+    public ObjetModifiable lecture(Fabrique f) throws XMLStreamException, ParseException {
+        ArrayList<String> donnees = lectureDonnee();
+        return f.generer(donnees);
     }
 }

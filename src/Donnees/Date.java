@@ -1,8 +1,8 @@
 package Donnees;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,12 +26,11 @@ class Date {
             DateFormat df = new SimpleDateFormat("dd.mm.aa");
             df.setLenient(false);
             df.parse(date);
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             return 1;
         }
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.mm.aa");
-        String aujourdhui= dtf.format(LocalDateTime.now());
+        String aujourdhui = dtf.format(LocalDateTime.now());
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.aa");
 
