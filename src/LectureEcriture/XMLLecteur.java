@@ -12,11 +12,11 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-class XMLLecteur implements IOGestion {
+public class XMLLecteur implements IOGestion {
 
     private final XMLStreamReader fichierConsultable;
 
-    XMLLecteur(String fichierNom) throws FileNotFoundException, XMLStreamException {
+    public XMLLecteur(String fichierNom) throws FileNotFoundException, XMLStreamException {
         FileInputStream fichier = new FileInputStream(fichierNom);
         XMLInputFactory fichierParser = XMLInputFactory.newInstance();
         fichierConsultable = fichierParser.createXMLStreamReader(fichier);
@@ -27,33 +27,36 @@ class XMLLecteur implements IOGestion {
         while (fichierConsultable.hasNext()) {
             evenement = fichierConsultable.next();
             if (evenement == XMLEvent.START_ELEMENT &&
-                    fichierConsultable.getLocalName().equals("client")) {
-                return creerClient();
+                    (fichierConsultable.getLocalName().equals("client")
+                            || fichierConsultable.getLocalName().equals("fournisseur"))) {
+                return creerInterlocuteur();
             }
         }
         return null;
     }
 
-    private ArrayList<String> creerClient() throws XMLStreamException, ParseException {
+    private ArrayList<String> creerInterlocuteur() throws XMLStreamException, ParseException {
         ArrayList<String> donnees = new ArrayList();
-        String idClientTexte = fichierConsultable.getAttributeValue(null, "id");
-        ArrayList<String> data = creerPlanche();
-        donnees.add(idClientTexte);
+        String idTexte = fichierConsultable.getAttributeValue(null, "id");
+        ArrayList<String> data = creerBois();
+        donnees.add(idTexte);
         donnees.addAll(data);
         return donnees;
     }
 
-    private ArrayList<String> creerPlanche() throws XMLStreamException, ParseException {
+    private ArrayList<String> creerBois() throws XMLStreamException, ParseException {
         ArrayList<String> donnees = new ArrayList();
         while (fichierConsultable.hasNext()) {
             int evenement = fichierConsultable.next();
-            if (evenement == XMLEvent.END_ELEMENT && fichierConsultable.getLocalName().equals("client")) {
+            if (evenement == XMLEvent.END_ELEMENT && (fichierConsultable.getLocalName().equals("client")
+                    || fichierConsultable.getLocalName().equals("fournisseur"))) {
                 break;
             }
             if (evenement == XMLEvent.START_ELEMENT &&
-                    fichierConsultable.getLocalName().equals(("planche"))) {
+                    (fichierConsultable.getLocalName().equals("planche")
+                    || fichierConsultable.getLocalName().equals("panneau"))) {
 
-                String idPlancheTexte = fichierConsultable.getAttributeValue(null,
+                String idBoisTexte = fichierConsultable.getAttributeValue(null,
                         "id");
                 String nombreTexte = fichierConsultable.getAttributeValue(null,
                         "nombre");
@@ -61,10 +64,16 @@ class XMLLecteur implements IOGestion {
                         "prix");
                 String dateTexte = fichierConsultable.getAttributeValue(null, "date");
 
-                donnees.add(idPlancheTexte);
+                donnees.add(idBoisTexte);
                 donnees.add(nombreTexte);
                 donnees.add(prixTexte);
                 donnees.add(dateTexte);
+            }
+            if(evenement == XMLEvent.START_ELEMENT && fichierConsultable.getLocalName().equals("dim")){
+                String longueur = fichierConsultable.getAttributeValue(null, "L");
+                String largeur = fichierConsultable.getAttributeValue(null, "l");
+                donnees.add(longueur);
+                donnees.add(largeur);
             }
         }
         return donnees;

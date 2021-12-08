@@ -1,9 +1,8 @@
 package Donnees;
 
-class Fournisseur implements ObjetModifiable {
-    private final int id;
+class Fournisseur extends Interlocuteurs {
 
-    Fournisseur(int id) {
-        this.id = id;
+    public Fournisseur(int id) {
+        super(id);
     }
 }

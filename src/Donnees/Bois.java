@@ -27,7 +27,7 @@ abstract class Bois implements ObjetModifiable {
         int nombre = Integer.parseInt(donneesPlanche.get(1));
         double prixNombre = Double.parseDouble(donneesPlanche.get(2));
         Prix prix = new Prix(prixNombre);
-        java.util.Date dateFormat = new SimpleDateFormat("jj.mm.aaaa").parse(donneesPlanche.get(3));
+        java.util.Date dateFormat = new SimpleDateFormat("dd.MM.yyyy").parse(donneesPlanche.get(3));
         Date date = new Date(dateFormat);
         double longueur = Double.parseDouble(donneesPlanche.get(4));
         double largeur = Double.parseDouble(donneesPlanche.get(5));
