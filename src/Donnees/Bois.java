@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 abstract class Bois implements ObjetModifiable {
-    private int id;
-    private int idProprietaire;
-    private int nombre;
     private final Prix prix;
     private final Date date;
     private final Dimension dimension;
+    private int id;
+    private int idProprietaire;
+    private int nombre;
 
     Bois(int id, int nombre, Prix prix, Date date, Dimension dimension, int idProprietaire) {
         this.id = id;
@@ -27,7 +27,7 @@ abstract class Bois implements ObjetModifiable {
         int nombre = Integer.parseInt(donneesPlanche.get(1));
         double prixNombre = Double.parseDouble(donneesPlanche.get(2));
         Prix prix = new Prix(prixNombre);
-        java.util.Date dateFormat = new SimpleDateFormat("dd.MM.yyyy").parse(donneesPlanche.get(3));
+        java.util.Date dateFormat = new SimpleDateFormat("dd.MM.yy").parse(donneesPlanche.get(3));
         Date date = new Date(dateFormat);
         double longueur = Double.parseDouble(donneesPlanche.get(4));
         double largeur = Double.parseDouble(donneesPlanche.get(5));
@@ -39,6 +39,18 @@ abstract class Bois implements ObjetModifiable {
         this.date = date;
         this.dimension = dim;
         this.idProprietaire = idProprietaire;
+    }
+
+    public Prix getPrix() {
+        return prix;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Dimension getDimension() {
+        return dimension;
     }
 
     int getId() {

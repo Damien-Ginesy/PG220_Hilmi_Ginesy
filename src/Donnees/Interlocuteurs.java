@@ -2,9 +2,9 @@ package Donnees;
 
 import java.util.ArrayList;
 
- abstract class Interlocuteurs implements ObjetModifiable {
+abstract class Interlocuteurs implements ObjetModifiable {
     private final int id;
-    private final ArrayList<Bois> boisListe = new ArrayList();
+    private ArrayList<Bois> boisListe = new ArrayList<>();
 
     Interlocuteurs(int id) {
         this.id = id;
@@ -18,7 +18,11 @@ import java.util.ArrayList;
         boisListe.add(bois);
     }
 
-    ArrayList getBoisListe() {
+    void addBoisListe(ArrayList<Bois> listeBois) {
+        boisListe = listeBois;
+    }
+
+    ArrayList<Bois> getBoisListe() {
         return boisListe;
     }
 }

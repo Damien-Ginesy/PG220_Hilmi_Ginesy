@@ -1,7 +1,7 @@
 package Donnees;
 
-public interface Comparaison {
-    default void EstDansIntervalle() {
-    }
+import java.text.ParseException;
 
+public interface Comparaison {
+    void EstDansIntervalle() throws ParseException;
 }

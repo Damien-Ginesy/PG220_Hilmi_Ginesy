@@ -2,29 +2,28 @@ package Donnees;
 
 import java.text.DecimalFormat;
 
-public class Prix {
+class Prix implements Comparaison {
     private double prix;
 
-    public Prix(double prix) {
+    Prix(double prix) {
         this.prix = prix;
     }
 
-    public double getPrix() {
+    double getPrix() {
         return this.prix;
     }
 
-    public void setPrix(double prix) {
+    void setPrix(double prix) {
         this.prix = prix;
     }
 
-    public static int estDansIntervalle(Prix price) {
-
+    @Override
+    public void EstDansIntervalle() {
         DecimalFormat df = new DecimalFormat("##.##");
-        String stringBonPrix = df.format(price.prix);
+        String stringBonPrix = df.format(this.prix);
         double bonPrix = Double.parseDouble(stringBonPrix);
-        if (bonPrix == price.prix && price.prix > 0) {
-            return 0;
+        if (bonPrix != this.prix || this.prix < 0) {
+            throw new IllegalArgumentException();
         }
-        return 1;
     }
 }

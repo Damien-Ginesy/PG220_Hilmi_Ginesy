@@ -1,3 +1,4 @@
 package Donnees;
 
-public interface ObjetModifiable {}
+public interface ObjetModifiable {
+}

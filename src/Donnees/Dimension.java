@@ -1,34 +1,33 @@
 package Donnees;
 
-public class Dimension {
+class Dimension implements Comparaison {
     private double longueur;
     private double largeur;
 
-    public Dimension(double longueur, double largeur) {
+    Dimension(double longueur, double largeur) {
         this.longueur = longueur;
         this.largeur = largeur;
     }
 
-    public double getLongueur() {
+    double getLongueur() {
         return this.longueur;
     }
 
-    public void setLongueur(double longueur) {
+    void setLongueur(double longueur) {
         this.longueur = longueur;
     }
 
-    public double getLargeur() {
+    double getLargeur() {
         return this.largeur;
     }
 
-    public void setLargeur(double largeur) {
+    void setLargeur(double largeur) {
         this.largeur = largeur;
     }
 
-    public static int EstDansIntervalle(Dimension dim) {
-        if (dim.largeur > dim.largeur && dim.largeur > 0 && dim.longueur > 0) {
-            return 0;
+    public void EstDansIntervalle() {
+        if (this.longueur <= this.largeur || this.largeur < 0 || this.longueur < 0) {
+            throw new IllegalArgumentException();
         }
-        return 1;
     }
 }
