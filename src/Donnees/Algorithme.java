@@ -76,4 +76,29 @@ class Algorithme {
 
     private void algorithmeSimple() {
 
+        ArrayList<Planche> totalPlancheListe = creerListeBois(listeClient.stream().map(
+                client -> (Interlocuteurs) client).collect(Collectors.toList())).stream().map(
+                        bois -> (Planche) bois).collect(Collectors.toCollection(ArrayList::new));
+
+        ArrayList<Panneau> totalPanneauListe = creerListeBois(listeFournisseur.stream().map(
+                fournisseur -> (Interlocuteurs) fournisseur).collect(Collectors.toList())).stream().map(
+                        bois -> (Panneau) bois).collect(Collectors.toCollection(ArrayList::new));
+
+        for(Bois planche : totalPlancheListe ){
+            ArrayList<Panneau> panneauPossible = new ArrayList<>(totalPanneauListe);
+            panneauPossible.removeIf(panneau-> panneau.getDate().getDate().before(planche.getDate().getDate()));
+        }
+
+           /* for (Bois panneau : fournisseurBois){
+                java.util.Date date = planche.getDate().getDate();
+            }
+               for (Bois planche : boisListe) {
+                    java.util.Date date = planche.getDate().getDate();
+                    if (date)
+                }*/
+
+
+        }
+
+
     }
