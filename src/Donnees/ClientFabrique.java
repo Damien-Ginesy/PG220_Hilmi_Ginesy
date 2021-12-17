@@ -3,6 +3,10 @@ package Donnees;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+/**
+ * Classe qui définit la Fabrique de l'objet client dans le cadre du design du pattern factory
+ * @see Fabrique
+ */
 class ClientFabrique implements Fabrique {
 
     @Override
