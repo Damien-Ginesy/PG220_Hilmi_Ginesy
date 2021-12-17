@@ -15,10 +15,4 @@ class XMLEcriture {
         XMLOutputFactory fichierParser = XMLOutputFactory.newInstance();
         fichierResultat = fichierParser.createXMLStreamWriter(fichier);
     }
-
-    XMLEcriture(XMLStreamWriter fichier) {
-        fichierResultat = fichier;
-    }
-
-
 }

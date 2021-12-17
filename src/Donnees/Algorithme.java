@@ -22,6 +22,7 @@ class Algorithme {
                 collect(Collectors.toList());
         listeFournisseur = genererListe(fileName + "/fournisseurs.xml", fournisseurFabrique).stream().
                 map(e -> (Fournisseur) e).collect(Collectors.toList());
+        algorithmeSimple();
     }
 
     public static void main(String[] args) throws XMLStreamException, FileNotFoundException, ParseException {
@@ -67,7 +68,12 @@ class Algorithme {
         return boisListe;
     }
 
+    private ArrayList<Bois> creerListeBois(List<Interlocuteurs> listeInterlocuteur){
+        ArrayList<Bois> totalBoisListe = new ArrayList<>();
+        listeInterlocuteur.forEach(interlocuteurs -> totalBoisListe.addAll(interlocuteurs.getBoisListe()));
+        return totalBoisListe;
+    }
+
     private void algorithmeSimple() {
 
     }
-}
